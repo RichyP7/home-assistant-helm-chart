@@ -24,3 +24,9 @@ $  kubectl cp ./backup/container/homeassistant/data/ homeassistant/home-assistan
 ## Notes
 
 #Changed Local HA URL from http://10.42.0.33:8123 to local address
+
+
+- Manually installed  HACS
+```
+wget -O - https://get.hacs.xyz | bash -
+````
