@@ -325,27 +325,12 @@ configuration:
             input_type: input
             data_type: uint16
             unique_id: isg_status_operation
-          - name: "betriebsstatus_sgready"
-            slave: 1
-            address: 5000
-            input_type: input
-            data_type: uint16
-            unique_id: isg_status_sgready
-        switches :
-          - name: SG_Ready_input_01
-            address: 4001
-            command_on: 1
-            command_off: 0
-            verify:
-                input_type: input
-                address: 5000
-                delay: 5
-                state_on:
-                  - 3
-                  - 4
-                state_off:
-                  - 1
-                  - 2
+        binary_sensor:
+          - name: "isg_betriebsstatus_hk2_pumpe"
+            device_class: "running"
+            state: {{ "{{ states('sensor.isg_status_operation')|int|bitwise_and(1)>0 }}" | quote }}
+
+
   # Init script for the Home Assistant initialization, you can use Go template functions
   # Script is executed before the Home Assistant container starts and is used to prepare the configuration
   # Will be executed only if the configuration.enabled is set to true

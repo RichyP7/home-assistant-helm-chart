@@ -30,3 +30,12 @@ $  kubectl cp ./backup/container/homeassistant/data/ homeassistant/home-assistan
 ```
 wget -O - https://get.hacs.xyz | bash -
 ````
+
+Rebase FORK with upstream
+
+```
+git fetch upstream
+git checkout main
+git rebase upstream/main
+
+````
